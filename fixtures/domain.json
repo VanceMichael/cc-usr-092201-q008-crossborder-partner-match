@@ -1,14 +1,18 @@
 {
   "domain": "crossborder-partner-match",
-  "version": 1,
+  "version": 2,
   "sample_id": "092201-008",
   "record_types": [
     "企业档案",
     "合作需求",
     "能力证据",
+    "披露授权",
     "保密协议",
     "会谈纪要",
-    "合作里程碑"
+    "修订记录",
+    "双方确认",
+    "合作里程碑",
+    "供需缺口"
   ],
   "workflow_states": [
     "待匹配",
@@ -18,15 +22,139 @@
     "验证中",
     "已结束"
   ],
+  "profile_fields": {
+    "capabilities": "自身能力",
+    "open_problems": "待解决问题",
+    "compliance_boundary": "合规边界",
+    "disclosable_materials": "允许披露的材料",
+    "cooperation_modes": "合作方式"
+  },
+  "matching_policy": {
+    "necessary_conditions": [
+      "能力对口",
+      "问题对应",
+      "合规边界相容",
+      "披露范围明确",
+      "合作方式一致"
+    ],
+    "contact_release": "必要条件相互满足才开放联系人",
+    "technical_details": "保密协议生效后才交换技术细节"
+  },
+  "amendment_causes": [
+    "翻译更正",
+    "需求改变",
+    "机构重复报名",
+    "代表离职",
+    "纪要分歧"
+  ],
+  "amendment_rule": "后来的内容以追加方式记录，不覆盖原记录",
+  "confirmation_rule": "试验、尽调、采购进度由双方分别确认，任一方不能代替对方宣布完成",
+  "milestone_categories": [
+    "试验",
+    "尽调",
+    "采购"
+  ],
+  "progress_evidence": [
+    "真实会谈",
+    "样品验证",
+    "合同进展"
+  ],
+  "gap_reasons": [
+    "本地供给能力不足",
+    "合规边界不相容",
+    "合作方式不一致",
+    "披露范围不足",
+    "时间安排冲突"
+  ],
+  "gap_rule": "未成原因归纳成不泄露商业秘密的供需缺口",
   "facts": [
     "对接会汇聚多个国家和地区的企业",
     "英国企业分别关注生产提效与医疗合作",
-    "企业希望通过大会寻找安徽本地伙伴"
+    "企业希望通过大会寻找安徽本地伙伴",
+    "仅留合作意向与名片无法推动后续跟进",
+    "企业档案需说清自身能力、待解决问题、合规边界、允许披露的材料及合作方式",
+    "必要条件相互满足后才开放联系人",
+    "技术细节在保密协议生效后才交换",
+    "翻译更正、需求改变、机构重复报名、代表离职与纪要分歧均以追加记录处理，不覆盖原记录",
+    "试验、尽调与采购进度由双方分别确认，任一方不能代替对方宣布完成",
+    "主办方依据双方确认辨别真实会谈、样品验证与合同进展",
+    "未成原因归纳成不泄露商业秘密的供需缺口"
   ],
   "sample": {
     "requester": "英国食品企业样例",
     "need": "产线智能提效",
     "preferred_mode": "联合试验",
-    "disclosure": "摘要可见"
+    "disclosure": "摘要可见",
+    "profiles": [
+      {
+        "party": "英国食品企业样例",
+        "role": "需求方",
+        "capabilities": "食品生产线运营与品控",
+        "open_problems": "产线智能提效",
+        "compliance_boundary": "食品安全法规与跨境数据合规",
+        "disclosable_materials": "产线摘要与公开认证",
+        "cooperation_modes": ["联合试验"]
+      },
+      {
+        "party": "安徽自动化企业样例",
+        "role": "供给方",
+        "capabilities": "产线智能改造与视觉检测",
+        "open_problems": "海外食品行业场景验证",
+        "compliance_boundary": "装备出口合规",
+        "disclosable_materials": "公开案例集",
+        "cooperation_modes": ["联合试验", "设备采购"]
+      }
+    ],
+    "matching": {
+      "satisfied": [
+        "能力对口",
+        "问题对应",
+        "合规边界相容",
+        "披露范围明确",
+        "合作方式一致"
+      ],
+      "mutually_satisfied": true,
+      "contact_released": true
+    },
+    "nda": {
+      "status": "已生效",
+      "technical_details_exchanged": true
+    },
+    "amendments": [
+      {
+        "cause": "翻译更正",
+        "target": "会谈纪要样例-01",
+        "kept_original": true,
+        "note": "原纪要保留，更正内容以追加记录"
+      },
+      {
+        "cause": "代表离职",
+        "target": "企业档案样例-英食",
+        "kept_original": true,
+        "note": "原代表信息保留，交接以追加记录"
+      }
+    ],
+    "milestones": [
+      {
+        "category": "试验",
+        "title": "产线视觉检测联合试验",
+        "confirmations": { "需求方": true, "供给方": true },
+        "complete": true
+      },
+      {
+        "category": "尽调",
+        "title": "双方合规尽调",
+        "confirmations": { "需求方": true, "供给方": false },
+        "complete": false
+      }
+    ],
+    "progress_evidence": ["真实会谈", "样品验证"],
+    "gap_summaries": [
+      {
+        "sector": "医疗健康",
+        "need": "糖尿病管理与养老照护",
+        "reason": "本地供给能力不足"
+      }
+    ]
   }
 }

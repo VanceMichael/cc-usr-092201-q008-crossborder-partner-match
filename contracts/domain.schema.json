@@ -8,6 +8,15 @@
     "sample_id",
     "record_types",
     "workflow_states",
+    "profile_fields",
+    "matching_policy",
+    "amendment_causes",
+    "amendment_rule",
+    "confirmation_rule",
+    "milestone_categories",
+    "progress_evidence",
+    "gap_reasons",
+    "gap_rule",
     "facts",
     "sample"
   ],
@@ -17,7 +26,7 @@
     },
     "version": {
       "type": "integer",
-      "minimum": 1
+      "minimum": 2
     },
     "sample_id": {
       "type": "string",
@@ -37,6 +46,106 @@
         "type": "string"
       }
     },
+    "profile_fields": {
+      "type": "object",
+      "description": "企业档案自述五要素：键为稳定字段名，值为展示名",
+      "required": [
+        "capabilities",
+        "open_problems",
+        "compliance_boundary",
+        "disclosable_materials",
+        "cooperation_modes"
+      ],
+      "properties": {
+        "capabilities": {
+          "type": "string",
+          "minLength": 1
+        },
+        "open_problems": {
+          "type": "string",
+          "minLength": 1
+        },
+        "compliance_boundary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "disclosable_materials": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cooperation_modes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "matching_policy": {
+      "type": "object",
+      "required": [
+        "necessary_conditions",
+        "contact_release",
+        "technical_details"
+      ],
+      "properties": {
+        "necessary_conditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "contact_release": {
+          "type": "string",
+          "minLength": 1
+        },
+        "technical_details": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "amendment_causes": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "string"
+      }
+    },
+    "amendment_rule": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confirmation_rule": {
+      "type": "string",
+      "minLength": 1
+    },
+    "milestone_categories": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "progress_evidence": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "gap_reasons": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "gap_rule": {
+      "type": "string",
+      "minLength": 1
+    },
     "facts": {
       "type": "array",
       "minItems": 2,
@@ -46,7 +155,39 @@
     },
     "sample": {
       "type": "object",
-      "minProperties": 3
+      "required": [
+        "profiles",
+        "matching",
+        "nda",
+        "amendments",
+        "milestones",
+        "progress_evidence",
+        "gap_summaries"
+      ],
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "minItems": 2
+        },
+        "matching": {
+          "type": "object"
+        },
+        "nda": {
+          "type": "object"
+        },
+        "amendments": {
+          "type": "array"
+        },
+        "milestones": {
+          "type": "array"
+        },
+        "progress_evidence": {
+          "type": "array"
+        },
+        "gap_summaries": {
+          "type": "array"
+        }
+      }
     }
   },
   "additionalProperties": false

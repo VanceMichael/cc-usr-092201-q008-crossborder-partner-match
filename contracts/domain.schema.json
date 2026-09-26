@@ -9,6 +9,7 @@
     "record_types",
     "workflow_states",
     "facts",
+    "rules",
     "sample"
   ],
   "properties": {
@@ -40,6 +41,13 @@
     "facts": {
       "type": "array",
       "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 3,
       "items": {
         "type": "string"
       }
